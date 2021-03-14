@@ -1,0 +1,147 @@
+#nav_bar ul li a.active-page {
+    background-color: mediumorchid;
+    color: white;
+}
+
+#nav_bar ul li a {
+    background-color: rebeccapurple;
+    color: white;
+}
+
+h1 {
+    color: rgb(12, 145, 78);
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    color: purple;
+    margin-top: 10px;
+}
+
+li {
+  color: cadetblue;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.myHeader {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: purple;
+    margin-top: 10px;
+    text-shadow: 2px 2px blue;
+}
+
+.myHeader2 {
+    text-align: center;
+    font-size: 30px;
+    font-family:'Times New Roman', Times, serif;
+    font-style:italic;
+    color: blue;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height:400px;
+    width: 300px;
+}
+
+
+.foodStyle {
+  text-align: center;
+  font-family: 'Nova Flat';
+  font-size: 40px;
+  font-weight:bold;
+  color: mediumpurple
+}
+
+.styles {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    width:100%
+}
+
+    .styles > div {
+        background-color: #f1d9d9;
+        width: 400px;
+        margin: 10px;
+        text-align: center;
+        line-height: 50px;
+        justify-content: center;
+        align-items: center;
+        color: mediumpurple;
+    }
+
+.starRes {
+    text-align: center;
+    font-family: 'Nova Flat';
+    font-size: 40px;
+    font-weight: bold;
+    color: mediumpurple
+}
+
+    .starRes ul {
+        float:unset;
+        list-style: none;
+        font-family:'Bradley Hand ITC';
+        font-size:20px;
+        padding:0;
+    }
+
+    a {
+        color:aquamarine;
+    }
+
+    #name{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size:30px;
+        color:darkturquoise;
+    }
+
+
+#loginstuff {
+    background-color:grey;
+    border: 1.5px solid blue;
+    margin: 10px 0px 100px 2.5%;    ;
+    width: 20%;
+    padding:10px;
+    color: white;
+}
+
+legend {
+    background-color: mediumpurple;
+    color: white;
+    padding: 3px 0px;
+    text-indent: 5px;
+    width: 100%;
+}
+
+
+#footer{
+    background-color:rebeccapurple;
+    color:white;
+    padding:10px;
+}
+
+#currenUser {
+    text-align:left;
+}
+
+#copy {
+    text-align: center;
+}
+
+#modify {
+    background-color: rgb(255, 246, 205);
+    border: 1.5px solid purple;
+    margin: 5px ;
+    padding:10px;
+    color:rgb(97, 48, 194);
+}
+

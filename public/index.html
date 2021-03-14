@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HungryBear</title>
+  <!-- <documentation at http://demos.jquerymobile.com/1.4.1/ > -->
+
+  <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+
+
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
+  <link rel="stylesheet" href="stylesheets/themes/hungrybeartheme2.min.css" />
+  <link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <script src="./javascripts/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
+
+</head>
+
+<body>
+
+  <!-- Start of  page ------------------------------------------------------------------>
+  <div data-role="page" id="home">
+
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <!--<h1 class="title">Hungry Bear</h1>-->
+      <div data-role="navbar" data-theme='a' id="nav_bar">
+        <ul>
+        <li><a href="#home" class='active-page'>Home Page</a></li>
+        <li><a href="#Load">Add Restaurant</a></li>
+        <li><a href="#ListAll">List All Restaurants</a></li>
+        <li><a href="#ListSome">List Restaurants by Genre</a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <div class="myHeader">Welcome to Hungry Bear</div>
+      <p class="myHeader2">You can share your favorite restaurants here and explore more delicious foods in the world</p>
+      <img class="logo" id="logo" src="./images/logo/hungrybear1.png" alt="picture of web logo" >
+    </div>
+
+    <!--   page content -->
+    <div data-role="content" data-theme='a'>
+        <div>
+            <section class="foodStyle">
+                <h2 class="foodStyle" > Popular Food Style</h2>
+            </section>
+            <section class="styles">
+                <div id="box1">
+                    <p>American</p>
+                    <img id="american" src="./images/style/american.jpg" alt="American food" width="200" height="160">
+                </div>
+
+                <div id="box2">
+                    <p>Brazilian</p>
+                    <img id="brazilian" src="./images/style/brazilian.jpg" alt="Brazilian food" width="200" height="160">
+                </div>
+
+                <div id="box3">
+                    <p>Chinese</p>
+                    <img id="chinese" src="./images/style/chinese.jpg" alt="Chinese food" width="200" height="160">
+                </div>
+
+                <div id="box4">
+                    <p>Greek</p>
+                    <img id="greek" src="./images/style/greek.jpg" alt="Greek food" width="200" height="160">
+                </div>
+
+                <div id="box5">
+                    <p>Italian</p>
+                    <img id="italian" src="./images/style/italian.jpg" alt="Italian food" width="200" height="160">
+                </div>
+
+                <div id="box6">
+                    <p>Mexican</p>
+                    <img id="mexican" src="./images/style/mexican.jpg" alt="Mexican food" width="200" height="160">
+                </div>
+            </section>
+            <section class="starRes">
+                <P> Star Restaurant of Week</P>
+                <img id="star" src="./images/style/starofweek.jpg" alt="The Dolar Shop" width="400" height="320">
+                <p id="name">The Dolar Shop</p>
+                <ul id="list">
+                    <li>Chinese hot pot</li>
+                    <li>11020 NE 6th St Ste 90 Bellevue, WA 98004</li>
+                    <li>(425)390-8888</li>
+                    <li><a href="https://www.dolarshop.com">www.dolarshop.com</a></li>
+                </ul>                
+            </section>
+        </div>
+      <fieldset id="loginstuff">
+       <legend>Log In</legend>
+        Enter UserName <br />
+        <input type="text" value="" id="username" />
+        Enter password <br />
+        <input type="text" value="" id="password" />
+          <input type="button" value="Click To Login" id="login" />
+          <input type="button" value="Click To Create Account" id="createaccount" />
+      </fieldset>
+    </div>
+
+    <!--  page footer -->
+    <div data-role="footer" data-theme='a' id="footer">
+      <section id="currentUser">
+        <p id="showUser1"></p>
+        <input type="button" value="Click To Logout" id="logout" />
+      </section>
+      <p id="copy">Copyrigtht 2021 by Hungry Bear</p>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+
+
+
+  <div data-role="page" id="Load">
+    <!--  page header -->
+    <div data-role="header" data-theme='a'>
+      <!--<h1>Add a Restaurant</h1>-->
+      <div data-role="navbar" data-theme='a' id="nav_bar">
+          <ul>
+              <li><a href="#home">Home Page</a></li>
+              <li><a href="#Load" class='active-page'>Add Restaurant</a></li>
+              <li><a href="#ListAll">List All Restaurants</a></li>
+              <li><a href="#ListSome">List Restaurants by style</a></li>
+          </ul>
+      </div><!-- /navbar -->
+      <div class="myHeader">Hungry Bear</div>
+    </div>
+
+    <!-- page content -->
+  
+    <div data-role="content" data-theme='a'>
+        <h2>Enter your favorite restaurant</h2>
+        Enter restaurant name <br />
+        <input type="text" value="" id="title" />
+        Enter address <br />
+        <input type="text" value="" id="address" />
+        Enter phone (xxx)xxx-xxxx<br />
+        <input type="text" value="" id="phone" pattern="[0-9]{3}[0-9]{3}-[0-9]{4}" required />
+        Enter review (between 1 and 5) <br />
+        <input type="number" value="" id="review" max="5" min="1" required />
+        Enter restaurant website <br />
+        <input type="text" value="" id="URL" />
+
+        <div class="ui-field-contain">
+            <label for="select-style">Select food style</label>
+            <select name="select-style" id="select-style">
+                <option value="American">American</option>
+                <option value="Brazilian">Brazilian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Greek">Greek</option>
+                <option value="Italian">Italian</option>
+                <option value="Mexican">Mexican</option>
+            </select>
+        </div>
+
+
+        <input type="button" value="Click To Add Restaurant" id="buttonAdd" data-inline="true" style="background:green" />
+        <input type="button" value="Clear Data" id="buttonClear" data-inline="true" style="background:green" />
+    </div>
+
+       
+    
+    <!--   page footer -->
+    <div data-role="footer" data-theme='a' id="footer">
+      <p id="showUser2"></p>
+      <p id="copy">Copyrigtht 2021 by Hungry Bear</p>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+
+  <div data-role="page" id="ListAll">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <!--<h1>My Restaurants List</h1>-->
+      <div data-role="navbar" data-theme='a' id="nav_bar">
+          <ul>
+              <li><a href="#home">Home Page</a></li>
+              <li><a href="#Load">Add Restaurant</a></li>
+              <li><a href="#ListAll" class='active-page'>List All Restaurants</a></li>
+              <li><a href="#ListSome">List Restaurants by style</a></li>
+          </ul>
+      </div><!-- /navbar -->
+      <div class="myHeader">Hungry Bear</div>
+      
+    </div>
+    <!--   page content -->
+    <section id="showAllRestaurantsSection">
+      <div data-role="content" data-theme='a'>
+        <h2> Favorite restaurants</h2>
+        <div id="divRestaurantList"></div>
+        <input type="button" value="Sort By Style" id="buttonSortStyle" data-inline="true" style="background:green"/>
+        <input type="button" value="Sort By Name" id="buttonSortName" data-inline="true" style="background:green"/>
+      </div>
+    </section>
+
+    <!--   page footer -->
+    <div data-role="footer" data-theme='a' id="footer">
+      <p id="showUser3"></p>
+      <p id="copy">Copyrigtht 2021 by Hungry Bear</p>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+  <!-- Start of  page -->
+  <div data-role="page" id="details">
+  
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <!--<h1>My Restaurants</h1>-->
+      <div data-role="navbar" data-theme='a'>
+          <ul>
+              <li><a href="#home">Home Page</a></li>
+              <li><a href="#Load">Add Restaurant</a></li>
+              <li><a href="#ListAll" >List All Restaurants</a></li>
+              <li><a href="#ListSome">List Restaurants by style</a></li>
+          </ul>
+      </div><!-- /navbar -->
+      <div class="myHeader">Hungry Bear</div>
+            
+    </div>
+  
+    <!--  content -->
+    <div data-role="content" data-theme='a'>
+      <H3> Here are the details</H3>
+      <p id="oneName"></p>
+      <p id="oneStyle"></p>
+      <p id="oneAddress"></p>
+      <p id="onePhone"></p>
+      <p id="oneReview"></p>
+      <p id="oneURL" hidden></p>
+      <input type="button" value="website" id="website" style="background:green"/>
+    </div>
+    <input type="button" value="Delete" id="delete" data-inline="true" style="background: rgb(216, 11, 11)"/>
+    <br />
+    <br />
+
+    <fieldset id="modify">
+       <legend>Modify this restaurant</legend>
+       New restaurant name <br />
+       <input type="text" value="" id="titleR" />
+       New restaurant style <br />
+       <input type="text" value="" id="styleR" />
+       New restaurant address <br />
+       <input type="text" value="" id="addressR" />
+       New restaurant phone <br />
+       <input type="text" value="" id="phoneR" />
+       New restaurant review <br />
+       <input type="text" value="" id="reviewR" />
+       New restaurant website URL <br />
+       <input type="text" value="" id="URLR" />
+       <input type="button" value="Modify" id="modify" data-inline="true" style="background:seagreen" />
+    </fieldset>
+
+
+    
+  
+    <!--    footer -->
+    <div data-role="footer" data-theme='a' id="footer">
+      <p id="showUser4"></p>
+      <p id="copy">Copyrigtht 2021 by Hungry Bear</p>
+    </div>  
+  </div>
+
+
+  <div data-role="page" id="ListSome">
+    <!--   page header -->
+    <div data-role="header" data-theme='a'>
+      <!--<h1>Restaurant List By Style</h1>-->
+      <div data-role="navbar" data-theme='a' id="nav_bar">
+          <ul>
+              <li><a href="#home">Home Page</a></li>
+              <li><a href="#Load">Add Restaurants</a></li>
+              <li><a href="#ListAll" >List All Restaurant</a></li>
+              <li><a href="#ListSome" class='active-page'>List Restaurants by style</a></li>
+
+          </ul>
+      </div><!-- /navbar -->
+        <div class="myHeader">Hungry Bear</div>   
+    </div>
+
+    <!--   page content -->
+    <div data-role="content" data-theme='a'>
+        <h2> Here are restaurants in that Style</h2>
+        <div id="divRestaurantListSubset"></div>
+        <input type="button" value="Show just American" id="buttonSubsetAmerican" data-inline="true" style="background:green" />
+        <input type="button" value="Show just Brazilian" id="buttonSubsetBrazilian" data-inline="true" style="background:green"/>
+        <input type="button" value="Show just Chinese" id="buttonSubsetChinese" data-inline="true" style="background:green"/>
+        <input type="button" value="Show just Greek" id="buttonSubsetGreek" data-inline="true" style="background:green"/>
+        <input type="button" value="Show just Italian" id="buttonSubsetItalian" data-inline="true" style="background:green"/>
+        <input type="button" value="Show just Mexican" id="buttonSubsetMexican" data-inline="true" style="background:green"/>
+    </div>
+  
+  
+    <!--   page footer -->
+    <div data-role="footer" data-theme='a' id="footer">
+        <p id="showUser5"></p>
+      <p id="copy">Copyrigtht 2021 by Hungry Bear</p>
+    </div>
+  </div>
+  <!-- End of  page ------------------------------------------------------------------>
+
+
+  <p id="IDparmHere" hidden>change1</p>  <!--hidden, a place to stash the Movie ID -->
+  <p id="LoggedInUserName" hidden>loggedout</p> <!--hidden, a place to stash the user UserName -->
+  
+</body>
+
+</html>
