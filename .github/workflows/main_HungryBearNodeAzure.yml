@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'HungryBearNodeAzure'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_61220702b3894aea8a4f0d1a39b6d06b }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_34f99bc85b5e47fea703090d7d5cf9d5 }}
         package: .
