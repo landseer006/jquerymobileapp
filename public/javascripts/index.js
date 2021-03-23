@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // also add the URL value
     });
 
-    document.getElementById("modify").addEventListener("click", function () {
+    document.getElementById("modifyButton").addEventListener("click", function () {
         
             let newRestaurant = new RestaurantObject(document.getElementById("titleR").value, document.getElementById("styleR").value, document.getElementById("addressR").value,
              document.getElementById("phoneR").value, document.getElementById("reviewR").value, document.getElementById("URLR").value);

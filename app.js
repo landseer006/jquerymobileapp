@@ -15,6 +15,34 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
+//bring in file system code
+let fs=require("fs");
+//add file support in an object with 3 methods
+
+fileManager = {
+    read: function(){
+        var rawdata=fs.readFileSync('restaurantData.json');
+        let goodData=JSON.parse(rawdata);
+        serverRestaurantArray=goodData;
+    },
+
+    write: function(){
+        let data=JSON.stringify(serverRestaurantArray);
+        fs.writeFileSync('restaurantData.json', data);
+    },
+
+    validData: function(){
+        var rawData=fs.readFileSync('restaurantData.json');
+        if(rawData.length<1){
+            return false;   
+        }
+        else {
+            return true;
+        }
+
+    }
+};
+
 // start by creating data so we don't have to type it in each time
 let serverRestaurantArray = [];
 
@@ -29,12 +57,20 @@ let RestaurantObject = function (pTitle, pStyle, pAddress, pPhone, pReview, pURL
     this.URL = pURL;
 }
 
-serverRestaurantArray.push(new RestaurantObject("John Howie Steak Restaurant", "American", "11111 NE 8th St Ste 125 Bellevue, WA 98004", "(425) 440-0880", 4,"http://johnhowiesteak.com"))
-serverRestaurantArray.push(new RestaurantObject("The Grill from Ipanema", "Brazilian", "2313 1st Ave Seattle, WA 98121", "(206) 457-4885", 4, "https://www.seattlegrillfromipanema.com"));
-serverRestaurantArray.push(new RestaurantObject("Din Tai Fung", "Chinese", "700 Bellevue Way NE, Bellevue, WA 98004", "(425) 698-1095", 4, "https://www.dintaifungusa.com"));
-serverRestaurantArray.push(new RestaurantObject("Mediterranean Grill", "Greek", "15253 Bel-Red Rd Suite C, Bellevue, WA 98007", "(425) 644-6066", 4, "https://www.medgrillbellevue.com"));
-serverRestaurantArray.push(new RestaurantObject("Cascina Spinasse", "Italian", "1531 14th Ave Seattle, WA 98122", "(206) 251-7673", 4.5,"http://spinasse.com/"));
-serverRestaurantArray.push(new RestaurantObject("Cactus Restaurants", "Mexican", "535 Bellevue Sq Bellevue, WA 98004", "(425) 455-4321", 4, "https://cactusrestaurants.com"));
+//check first if the file already has this initial data
+if(!fileManager.validData()){ //if not, add them
+    serverRestaurantArray.push(new RestaurantObject("John Howie Steak Restaurant", "American", "11111 NE 8th St Ste 125 Bellevue, WA 98004", "(425) 440-0880", 4,"http://johnhowiesteak.com"))
+    serverRestaurantArray.push(new RestaurantObject("The Grill from Ipanema", "Brazilian", "2313 1st Ave Seattle, WA 98121", "(206) 457-4885", 4, "https://www.seattlegrillfromipanema.com"));
+    serverRestaurantArray.push(new RestaurantObject("Din Tai Fung", "Chinese", "700 Bellevue Way NE, Bellevue, WA 98004", "(425) 698-1095", 4, "https://www.dintaifungusa.com"));
+    serverRestaurantArray.push(new RestaurantObject("Mediterranean Grill", "Greek", "15253 Bel-Red Rd Suite C, Bellevue, WA 98007", "(425) 644-6066", 4, "https://www.medgrillbellevue.com"));
+    serverRestaurantArray.push(new RestaurantObject("Cascina Spinasse", "Italian", "1531 14th Ave Seattle, WA 98122", "(206) 251-7673", 4.5,"http://spinasse.com/"));
+    serverRestaurantArray.push(new RestaurantObject("Cactus Restaurants", "Mexican", "535 Bellevue Sq Bellevue, WA 98004", "(425) 455-4321", 4, "https://cactusrestaurants.com"));
+    //save the array to file;
+    fileManager.write();
+}
+else{
+    fileManager.read();//do have prior restaurants so load up the array
+}
 
 
 // just one "site" with 2 pages, / and about
@@ -48,6 +84,7 @@ app.get('/', function(req, res) {
 
 /* GET restaurantList. */
 app.get('/divRestaurantList', function(req, res) {
+    fileManager.read();
     res.json(serverRestaurantArray);
 });
 
@@ -55,6 +92,7 @@ app.get('/divRestaurantList', function(req, res) {
 app.post('/addRestaurant', function(req, res) {
     console.log(req.body);
     serverRestaurantArray.push(req.body);
+    fileManager.write();
     // set the res(ponse) object's status propery to a 200 code, which means success
     res.status(200).send(JSON.stringify('success'));
   });
@@ -65,6 +103,7 @@ app.post('/addRestaurant', function(req, res) {
      for(let i=0; i < serverRestaurantArray.length; i++) {
        if(id === (serverRestaurantArray[i].ID) ) {
        serverRestaurantArray.splice(i,1); //remove 1 element at loc i
+       fileManager.write();
        res.send('success')
        }
      }
@@ -79,6 +118,7 @@ app.put('/modifyRestaurant/:id', (req, res)=>{
     for(var i=0;i<serverRestaurantArray.length;i++){
         if(serverRestaurantArray[i].ID==id){
             serverRestaurantArray[i]=restaurantObject;//remove 1 element at loc i
+            fileManager.write();
             res.send('success');
         }
     }
@@ -103,5 +143,8 @@ app.get('/error', function(req, res) {
 
 app.listen(3000);  // not setting port number in www.bin, simple to do here
 console.log('3000 is the magic port');
+
+// for running on Azure
+// app.listen(process.env.PORT || 80);
 
 module.exports = app;
