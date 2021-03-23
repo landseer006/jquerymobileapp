@@ -141,10 +141,10 @@ app.get('/error', function(req, res) {
 
 
 
-app.listen(3000);  // not setting port number in www.bin, simple to do here
-console.log('3000 is the magic port');
+//app.listen(3000);  // not setting port number in www.bin, simple to do here
+//console.log('3000 is the magic port');
 
 // for running on Azure
-// app.listen(process.env.PORT || 80);
+app.listen(process.env.PORT || 80);
 
 module.exports = app;
